@@ -1,8 +1,18 @@
 <?php
+// Put the folling code in every page except Login.php, Logout, and Fail.php:
+// Code starts
+$main_page = "/nnhs-appdev/app/main.php";
+$fail_page = "/nnhs-appdev/app/fail.php";
+
 session_start();
-if($_SESSION["logged_in"] == false){
-    header('Location: '.$_SESSION["fail_page"]);
+if(isset($_SESSION["logged_in"]) == false)
+    if($_SESSION["logged_in"] == false){
+        header('Location: '.$fail_page);
+    }
+else{
+    header('Location: '.$fail_page);
 }
+// Code ends
 ?>
 
 <html>
