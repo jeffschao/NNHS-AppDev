@@ -89,7 +89,6 @@
 			if (!skel.vars.isMobile
 			&&	$header.hasClass('alt')
 			&&	$banner.length > 0) {
-
 				$window.on('load', function() {
 
 					$banner.scrollwatch({
@@ -100,24 +99,10 @@
 						off:		function() { $header.removeClass('alt'); }
 					});
 				});
+				/* */
 			}
 	});
 
-	$(function() {
-		var submitButton = document.getElementById("submit");
-		submitButton.addEventListener(
-			"click",
-			function() {
-				var userName = document.getElementById("username").value;
-				var password = document.getElementById("password").value;
-				// Example login
-				if (userName == "Hello" && password == "World") {
-					alert("Welcome!");
-				} else {
-					alert("Goodbye!");
-				}
-			},
-			false);
-		});
+
 
 })(jQuery);
