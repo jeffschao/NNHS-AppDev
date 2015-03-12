@@ -6,6 +6,11 @@ $server_root = "/nnhs-appdev/app/";
 $main_page = $server_root."main.php"; // Change this to the page to go to once logged in
 $fail_page = $server_root."fail.php"; // Change this to the page to go to when an incorrect password is entered
 
+function alert($msg)
+    {
+        echo '<script type="text/javascript">alert("' . $msg . '"); </script>';
+    }
+
 session_start();
 $username = $_SESSION["username"];
 
@@ -26,10 +31,6 @@ if(isset($_SESSION["logged_in"])){
     
 </html>
 <?php
-function alert($msg)
-    {
-        echo '<script type="text/javascript">alert("' . $msg . '"); </script>';
-    }
 
 /*
  * 
