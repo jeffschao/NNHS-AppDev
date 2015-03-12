@@ -25,7 +25,7 @@ if($db_found){
     $result = mysql_query($SQL);
 
     while ( $db_field = mysql_fetch_assoc($result) ) {
-        if(($db_field["Username"] == $username) and ($db_field["Password"] == /*crypt(*/$password/*, $db_field["salt"])*/)){
+        if(($db_field["Username"] == $username) and ($db_field["Password"] == crypt($password, $db_field["salt"]))){
             $_SESSION["username"] = $username;
             $_SESSION["logged_in"] = true;
             $_SESSION["priv"] = $db_field["privalage"];
@@ -45,17 +45,11 @@ if($db_found){
 
     }
     mysql_close( $db_handle );
-    session_unset();
-    session_destroy();
-    session_start();
     $_SESSION["logged_in"] = false;
     header('Location: '.$fail);
     die();
 } else{
     mysql_close( $db_handle );
-    session_unset();
-    session_destroy();
-    session_start();
     $_SESSION["logged_in"] = false;
     header("Location: ".$baddb);
     die();

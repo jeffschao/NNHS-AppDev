@@ -9,7 +9,7 @@ $fail_page = $server_root."fail.php"; // Change this to the page to go to when a
 session_start();
 $username = $_SESSION["username"];
 
-if(isset($_SESSION["logged_in"]) !== true){
+if(isset($_SESSION["logged_in"])){
     if($_SESSION["logged_in"] !== true){
         header('Location: '.$fail_page);
         die();
