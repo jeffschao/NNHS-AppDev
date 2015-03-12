@@ -1,4 +1,9 @@
 <!DOCTYPE HTML>
+<?php
+$server_root = "/nnhs-appdev/app/";
+session_start();
+$_SESSION["logged_in"] = false;
+?>
 <html>
     <head>
     <title>NNHS Peer Tutor App</title>
@@ -19,6 +24,13 @@
         </noscript>
         <!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
     </head>
+    <?php
+    if(isset($_GET["cookies"])){
+        if($_GET["cookies"] == "false"){
+            echo("<p>Note: Browser cookies must be enabled to use this website</p>");
+        }
+    }
+    ?>
     <body class="landing">
         <!-- Header -->
         <!-- Generic Nav for possible future use
@@ -94,12 +106,12 @@
                         <section>
                             <span class="icon major fa-line-chart accent3"></span>
                             <h3>Improve Scores</h3>
-                            <p>Improve your scores by meeting regularly with a peer tutor, and scheduling a one time meeting before that big test!</p>
+                            <p>Improve your scores by meeting regularly with a peer tutor, or scheduling a one time meeting before that big test!</p>
                         </section>
                         <section>
                             <span class="icon major fa-lock accent5"></span>
                             <h3>Teachers</h3>
-                            <p>Teachers have the ability to find and schedule a tutoring session for one of their students from their teacher login. Make helping struggling students an easier process.</p>
+                            <p>Teachers have the ability to find and schedule a tutoring session for one of their students from their teacher login, making helping struggling students an easier process.</p>
                         </section>
                     </div>
                 </section>
@@ -111,10 +123,10 @@
             <section id="cta">
 
                 <h2>Sign In</h2>
-                <p>Students & Teachers: Sign in using your district provided username and password</p>
-                <p>Peer Tutors: Sign in with your Lit Center provided username and password</p>
+                <p>Sign in using your district provided username and password.</p>
+                <p>If you cannot sign in, please see the CAI lab!</p>
 
-                <form id="Signin" action="/nnhs-appdev/app/Login.php" method="post">
+                <form id="Signin" action="<?php echo $server_root ?>Login.php" method="post">
                     <div class="row uniform 50%">
 
                             <input type="text" name="username" id="username" placeholder="Username" value="" style="margin:5px"/>
